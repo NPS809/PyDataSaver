@@ -1,3 +1,4 @@
+from string import ascii_letters
 from DataSaver.errors import *
 from DataSaver.classes import *
 
@@ -6,6 +7,14 @@ class DS:
     isLoaded: bool = False
     path_to_file: str = ""
     chapters: list[Chapter] = []
+
+    @staticmethod
+    def CheckName(name: str):
+        if not name:
+            raise IncorrectName()
+        for char in name:
+            if char not in ascii_letters:
+                raise IncorrectName()
 
     @staticmethod
     def AddChapter(chapter: Chapter):
@@ -94,11 +103,13 @@ class DS:
     @staticmethod
     def CreateChapter(chapter_name: str):
         DS.CheckWordload()
+        DS.CheckName(chapter_name)
         DS.AddChapter(Chapter(chapter_name))
 
     @staticmethod
     def CreateField(chapter_name: str, field_name: str, value=""):
         DS.CheckWordload()
+        DS.CheckName(field_name)
         for chapter in DS.chapters:
             if chapter.name == chapter_name:
                 chapter.Add(field_name, value)
@@ -108,6 +119,7 @@ class DS:
     @staticmethod
     def RenameChapter(old_chapter_name: str, new_chapter_name):
         DS.CheckWordload()
+        DS.CheckName(new_chapter_name)
         for chapter in DS.chapters:
             if chapter.name == old_chapter_name:
                 chapter.name = new_chapter_name
@@ -117,6 +129,7 @@ class DS:
     @staticmethod
     def RenameField(chapter_name: str, old_field_name: str, new_field_name: str):
         DS.CheckWordload()
+        DS.CheckName(old_field_name)
         for chapter in DS.chapters:
             if chapter.name == chapter_name:
                 for field in chapter.fields:
