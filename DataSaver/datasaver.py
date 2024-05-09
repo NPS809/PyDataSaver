@@ -1,4 +1,3 @@
-from string import ascii_letters
 from DataSaver.errors import *
 from DataSaver.classes import *
 
