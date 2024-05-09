@@ -6,10 +6,11 @@
 This is a simple data saver using python.
 Now, this doesnt have any ui, but you can use code.
 
-Now, you can use next functions:
+## Base functions: 
 
 ```python
-from datasaver import *
+from DataSaver.datasaver import *
+
 DS.Load("path_to_data_file.dat")
 ```
 This code will be load all data.
@@ -24,7 +25,7 @@ Data file syntax:
 Also, you can save data file
 
 ```python
-from datasaver import *
+from DataSaver.datasaver import *
 
 # it will be save in new file
 DS.Save("path_to_new_data_file")
@@ -32,3 +33,37 @@ DS.Save("path_to_new_data_file")
 # it will be save in same file
 DS.Save()
 ```
+
+## Actions with Chapters and Fields
+
+You can delete Chapters and Fields:
+```python
+from DataSaver import DS
+
+DS.DeleteChapter("chapter_name")
+# If chapter is not exits, it will be raise ChapterNotExist error
+# similarly with fields
+DS.DeleteField("chapter_name", "field_name")
+```
+
+You can add your own Chapters and Fields
+
+```python
+from DataSaver import DS
+
+DS.CreateChapter("new_chapter_name")
+# If chapter exist, it will be raise error
+# similalry with fields
+DS.CreateField("chapter_name", "field_name", "value")
+```
+
+You can sets value for exist field:
+```python
+from DataSaver import DS
+
+DS.SetField("chapter_name", "field_name", "value")
+# Also, it has CreateIfNotExist argument
+# if field not exist, it will create new
+DS.SetField("chapter_name", "field_name", "value", CreateIfNotExist=True)
+```
+
