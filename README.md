@@ -46,7 +46,7 @@ DS.DeleteChapter("chapter_name")
 DS.DeleteField("chapter_name", "field_name")
 ```
 
-You can add your own Chapters and Fields
+You can add your own Chapters and Fields:
 
 ```python
 from DataSaver import DS
@@ -65,5 +65,13 @@ DS.SetField("chapter_name", "field_name", "value")
 # Also, it has CreateIfNotExist argument
 # if field not exist, it will create new
 DS.SetField("chapter_name", "field_name", "value", CreateIfNotExist=True)
+```
+
+You can rename Chapters and Fields:
+```python
+from DataSaver import DS
+
+DS.RenameChapter("old_chapter_name", "new_chapter_name")
+DS.RenameField("chapter_name", "old_field_name", "new_field_name")
 ```
 

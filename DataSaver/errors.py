@@ -27,3 +27,7 @@ class DataFileNotFound(Exception):
     def __init__(self):
         super().__init__("Файл данных не найден")
 
+
+class IncorrectName(Exception):
+    def __init__(self):
+        super().__init__("Такое имя нельзя использовать")

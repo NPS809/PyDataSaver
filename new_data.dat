@@ -1,4 +1,4 @@
-# GGG {
+# first_chapter {
     name : value
     name1 : value
     name2 : value
@@ -11,11 +11,6 @@
     name1 : value
     name2 : value
     name3 : value
-    name4 : value
-}
-
-# New Test Chapter {
-    name : value
-    new_field : any value
+    new_Field_name : value
 }
 

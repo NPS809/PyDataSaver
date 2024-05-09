@@ -104,3 +104,24 @@ class DS:
                 chapter.Add(field_name, value)
                 return
         raise ChapterNotExist()
+
+    @staticmethod
+    def RenameChapter(old_chapter_name: str, new_chapter_name):
+        DS.CheckWordload()
+        for chapter in DS.chapters:
+            if chapter.name == old_chapter_name:
+                chapter.name = new_chapter_name
+                return
+        raise ChapterNotExist()
+
+    @staticmethod
+    def RenameField(chapter_name: str, old_field_name: str, new_field_name: str):
+        DS.CheckWordload()
+        for chapter in DS.chapters:
+            if chapter.name == chapter_name:
+                for field in chapter.fields:
+                    if field.name == old_field_name:
+                        field.name = new_field_name
+                        return
+                raise FieldNotExist()
+        raise ChapterNotExist()
