@@ -2,6 +2,12 @@ from string import ascii_letters
 from DataSaver.errors import *
 from DataSaver.classes import *
 
+available_chars = ["a", "b", "c", "d", "e", "f", "g", "h", "j", "i", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+                   "u", "w", "v", "x", "y", "z",
+                   "A", "B", "C", "D", "E", "F", "G", "H", "J", "I", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+                   "U", "W", "V", "X", "Y", "Z",
+                   "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "_"]
+
 
 class DS:
     isLoaded: bool = False
@@ -11,21 +17,21 @@ class DS:
     @staticmethod
     def CheckName(name: str):
         if not name:
-            raise IncorrectName()
+            raise IncorrectNameError(name)
         for char in name:
-            if char not in ascii_letters:
-                raise IncorrectName()
+            if char not in available_chars:
+                raise IncorrectNameError(name)
 
     @staticmethod
     def AddChapter(chapter: Chapter):
         if chapter in DS.chapters:
-            raise ChapterAlreadyExist()
+            raise ChapterAlreadyExistError()
         DS.chapters.append(chapter)
 
     @staticmethod
     def CheckWordload():
         if not DS.isLoaded:
-            raise DataFileNotLoaded()
+            raise DataFileNotLoadedError()
 
     @staticmethod
     def Load(path_to_file: str):
@@ -40,13 +46,33 @@ class DS:
                                 chapters.append([i, j])
                                 break
                 chapters = [strings[a:b] for a, b in chapters]
+
                 for chapter in chapters:
-                    chpt = Chapter(chapter[0].replace("#", "").replace("{", "").strip())
+                    chpt_name = chapter[0]
+                    chpt_name = chpt_name.strip()
+                    chpt_name = chpt_name.removeprefix("#")
+                    chpt_name = chpt_name.removesuffix("{")
+                    chpt_name = chpt_name.strip()
+
+                    DS.CheckName(chpt_name)
+                    chpt = Chapter(chpt_name)
+
                     for string in chapter[1:]:
-                        chpt.Add(*string.split(":"))
+                        try:
+                            name, value = string.split(":")
+                            name = name.strip()
+                            value = value.strip()
+                            DS.CheckName(name)
+                            chpt.Add(name, value)
+                        except SyntaxError:
+                            raise DataFileSyntaxError(string)
+                        except TypeError:
+                            raise DataFileSyntaxError(f"'{string.strip()}'")
+
                     DS.AddChapter(chpt)
         except FileNotFoundError:
-            raise DataFileNotFound()
+            raise DataFileNotFoundError()
+
         else:
             DS.isLoaded = True
             DS.path_to_file = path_to_file
@@ -70,7 +96,7 @@ class DS:
             if chapter.name == chapter_name:
                 DS.chapters.remove(chapter)
                 return
-        raise ChapterNotExist()
+        raise ChapterNotExistError()
 
     @staticmethod
     def DeleteField(chapter_name: str, field_name: str):
@@ -81,8 +107,8 @@ class DS:
                     if field.name == field_name:
                         chapter.fields.remove(field)
                         return
-                raise FieldNotExist()
-        raise ChapterNotExist()
+                raise FieldNotExistError()
+        raise ChapterNotExistError()
 
     @staticmethod
     def SetField(chapter_name: str, field_name: str, value: any, CreateIfNotExist=False):
@@ -97,8 +123,8 @@ class DS:
                     DS.CreateField(chapter_name, field_name, value)
                     return
                 else:
-                    raise FieldNotExist()
-        raise ChapterNotExist()
+                    raise FieldNotExistError()
+        raise ChapterNotExistError()
 
     @staticmethod
     def CreateChapter(chapter_name: str):
@@ -114,7 +140,7 @@ class DS:
             if chapter.name == chapter_name:
                 chapter.Add(field_name, value)
                 return
-        raise ChapterNotExist()
+        raise ChapterNotExistError()
 
     @staticmethod
     def RenameChapter(old_chapter_name: str, new_chapter_name):
@@ -124,7 +150,7 @@ class DS:
             if chapter.name == old_chapter_name:
                 chapter.name = new_chapter_name
                 return
-        raise ChapterNotExist()
+        raise ChapterNotExistError()
 
     @staticmethod
     def RenameField(chapter_name: str, old_field_name: str, new_field_name: str):
@@ -136,5 +162,5 @@ class DS:
                     if field.name == old_field_name:
                         field.name = new_field_name
                         return
-                raise FieldNotExist()
-        raise ChapterNotExist()
+                raise FieldNotExistError()
+        raise ChapterNotExistError()

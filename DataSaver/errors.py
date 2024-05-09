@@ -1,33 +1,38 @@
-class FieldAlreadyExist(Exception):
+class FieldAlreadyExistError(Exception):
     def __init__(self):
-        super().__init__("Поле с таким именем уже существует")
+        super().__init__("\nПоле с таким именем уже существует")
 
 
-class ChapterAlreadyExist(Exception):
+class ChapterAlreadyExistError(Exception):
     def __init__(self):
-        super().__init__("Раздел с таким именем уже существует")
+        super().__init__("\nРаздел с таким именем уже существует")
 
 
-class ChapterNotExist(Exception):
+class ChapterNotExistError(Exception):
     def __init__(self):
-        super().__init__("Раздела с таким именем не существует")
+        super().__init__("\nРаздела с таким именем не существует")
 
 
-class FieldNotExist(Exception):
+class FieldNotExistError(Exception):
     def __init__(self):
-        super().__init__("Полe с таким именем не существует")
+        super().__init__("\nПолe с таким именем не существует")
 
 
-class DataFileNotLoaded(Exception):
+class DataFileNotLoadedError(Exception):
     def __init__(self):
-        super().__init__("Файл данных не подгружен")
+        super().__init__("\nФайл данных не подгружен")
 
 
-class DataFileNotFound(Exception):
+class DataFileNotFoundError(Exception):
     def __init__(self):
-        super().__init__("Файл данных не найден")
+        super().__init__("\nФайл данных не найден")
 
 
-class IncorrectName(Exception):
-    def __init__(self):
-        super().__init__("Такое имя нельзя использовать")
+class IncorrectNameError(Exception):
+    def __init__(self, extra_info: str):
+        super().__init__(f"\nТакое имя нельзя использовать: {extra_info}")
+
+
+class DataFileSyntaxError(Exception):
+    def __init__(self, extra_info: str):
+        super().__init__(f"\nНеправильный синтаксис файла данных\n---> {extra_info}")
