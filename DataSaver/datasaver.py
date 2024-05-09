@@ -164,3 +164,14 @@ class DS:
                         return
                 raise FieldNotExistError()
         raise ChapterNotExistError()
+
+    @staticmethod
+    def GetFieldValue(chapter_name: str, field_name: str) -> str:
+        DS.CheckWordload()
+        for chapter in DS.chapters:
+            if chapter.name == chapter_name:
+                for field in chapter.fields:
+                    if field.name == field_name:
+                        return field.value
+                raise FieldNotExistError()
+        raise ChapterNotExistError()
