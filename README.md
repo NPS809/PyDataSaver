@@ -9,7 +9,7 @@ Now, this doesnt have any ui, but you can use code.
 ## Base functions: 
 
 ```python
-from DataSaver.datasaver import *
+from DataSaver import DS
 
 DS.Load("path_to_data_file.dat")
 ```
@@ -25,7 +25,7 @@ Data file syntax:
 Also, you can save data file
 
 ```python
-from DataSaver.datasaver import *
+from DataSaver import DS
 
 # it will be save in new file
 DS.Save("path_to_new_data_file")
