@@ -1,12 +1,12 @@
-# GGG {
-    name : current_value
+# chapter_name1 {
+    name : value
     name1 : value
     name2 : value
     name3 : value
     name4 : value
 }
 
-# GGG2 {
+# chapter_name2 {
     name : value
     name1 : value
     name2 : value

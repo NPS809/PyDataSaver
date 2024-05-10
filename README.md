@@ -6,7 +6,7 @@
 This is a simple data saver using python.
 Now, this doesnt have any ui, but you can use code.
 
-## Base functions: 
+## Base functions:
 
 ```python
 from DataSaver import DS
@@ -37,6 +37,7 @@ DS.Save()
 ## Actions with Chapters and Fields
 
 You can delete Chapters and Fields:
+
 ```python
 from DataSaver import DS
 
@@ -58,6 +59,7 @@ DS.CreateField("chapter_name", "field_name", "value")
 ```
 
 You can sets value for exist field:
+
 ```python
 from DataSaver import DS
 
@@ -68,6 +70,7 @@ DS.SetField("chapter_name", "field_name", "value", CreateIfNotExist=True)
 ```
 
 You can rename Chapters and Fields:
+
 ```python
 from DataSaver import DS
 
