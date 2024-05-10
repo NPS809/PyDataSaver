@@ -1,7 +1,7 @@
 
 
 # DataSaver
-### maybe, such as json, but!!! much simplier
+### maybe, such as json, but!!! much simpler
 
 This is a simple data saver using python.
 Now, this doesnt have any ui, but you can use code.
