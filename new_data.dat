@@ -1,16 +1,11 @@
-# chapter_name1 {
-    name : value
-    name1 : value
-    name2 : value
-    name3 : value
-    name4 : value
+# new_main_chapter {
 }
 
-# chapter_name2 {
-    name : value
-    name1 : value
-    name2 : value
-    name3 : value
-    name4 : value
+# Chapter {
+    rarerir : 02510292007
+}
+
+# new_New_chapter {
+    new_field : new_value
 }
 
