@@ -78,3 +78,28 @@ DS.RenameChapter("old_chapter_name", "new_chapter_name")
 DS.RenameField("chapter_name", "old_field_name", "new_field_name")
 ```
 
+You can see datasaver's logs (only russian language):
+```bf
+[datasaver]: Попытка добавить новый раздел с именем 'dehfe'
+[datasaver]: Добавлен новый раздел с именем 'dehfe'
+[datasaver]: Добавлен новый раздел с именем 'dehfe'
+[datasaver]: Создание нового поля с именем 'hgure'...
+[datasaver]: Проверка имени 'hgure' на доступность
+[datasaver]: Имя доступно!
+[datasaver]: Добавлено новое поле с именем 'hgure' в разделе 'dehfe'
+[datasaver]: Переименование раздела 'new_chapter'...
+[datasaver]: Проверка имени 'new_New_chapter' на доступность
+[datasaver]: Имя доступно!
+[datasaver]: Раздел 'new_chapter' был переименован на 'new_New_chapter'
+[datasaver]: Переименование поля 'hgure'...
+[datasaver]: Проверка имени 'hgure' на доступность
+[datasaver]: Имя доступно!
+[datasaver]: Поле 'hgure' было переименовано на 'field'
+[datasaver]: Удаление поля 'field'...
+[datasaver]: Поле 'field' удалено
+[datasaver]: Удаление раздела 'dehfe'...
+[datasaver]: Раздел 'dehfe удалён'
+[datasaver]: Попытка сохранить файл в 'new_data.dat'
+[datasaver]: Сохранено успешно
+```
+
