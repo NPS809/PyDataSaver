@@ -64,7 +64,6 @@ class DS:
                             raise DataFileSyntaxError(field)
 
                 chapters.append(chapter)
-            print(*chapters, sep='\n\n')
         except FileNotFoundError:
             raise DataFileNotFoundError()
 
