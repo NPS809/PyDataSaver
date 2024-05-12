@@ -15,10 +15,10 @@ DS.Load("path_to_data_file.dat")
 ```
 This code will be load all data.
 
-Data file syntax:
+Data file syntax (optional):
 ```
-# ChapterName {
-    field_name1 : field_value
+# "ChapterName" {
+    "field_name1" : "field_value",
 }
 ```
 
